@@ -20,8 +20,31 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "NanumHuman";
+  src: url("./fonts/NanumHumanRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumHuman";
+  src: url("./fonts/NanumHumanBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumHuman";
+  src: url("./fonts/NanumHumanHeavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
 body {
-  font-family: "NanumSquareNeo", sans-serif;
+  font-family:
+    NanumSquareNeo,
+    -apple-system;
 }
 /*---------------- 노말라이즈--------------- */
 body,
@@ -95,10 +118,10 @@ header {
   padding: 0 20px;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: -0.6px;
+  letter-spacing: -0.5px;
 }
 
-.top_bar .top_bar_menu_btn {
+.top_bar > .top_bar_menu > .search_btn {
   cursor: pointer;
   border: none;
   outline: none;
@@ -110,14 +133,100 @@ header {
   background-position: -108px -155px;
   background-size: 214px auto;
 }
-/* ------------------탑 바 버튼 박스----------------- */
-.top_bar_btn_box {
+/* ------------------서치 박스----------------- */
+.search_box {
   height: 289.797px;
   background-color: #000;
 }
-
-.btn_box_item {
+/* ---------------------서치 이너------------------ */
+.search_box > .search_inner {
   width: 864px;
   height: 177.797px;
   margin: 0 528px;
+  padding-top: 46px;
+}
+/* ---------------------서치 인풋--------------------- */
+.search_box > .search_inner > .search_input {
+  height: 66px;
+  background-color: #222;
+}
+/* ------------------------------서치 버튼 2----------------------------- */
+.search_box > .search_inner > .search_input > .search_btn-2 {
+  padding: 16px 18px;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.search_box > .search_inner > .search_input > .search_btn-2 > .search_icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+  background-image: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/sp-pc.png);
+  background-repeat: no-repeat;
+  background-position: -255px -96px;
+  background-size: 305px auto;
+}
+/* -----------------------키워드 검색창------------------------------ */
+.search_box > .search_inner > .search_input > .input_search {
+  width: 100%;
+  background-color: #222;
+  box-sizing: border-box;
+  border: 0;
+  letter-spacing: -0.03em;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  font-family:
+    NanumSquareNeo,
+    -apple-systeml;
+}
+/* ---------------------------키워드 박스----------------------- */
+.keyword_box {
+  height: 61.7969px;
+  margin-bottom: 66px;
+  margin-top: 50px;
+}
+
+.keyword_box > .keyword_title {
+  font-family: "NanumHuman", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  color: #777;
+  font-style: normal;
+}
+
+.keyword_box > .keyword_list_box {
+  height: 29px;
+  margin-top: 16px;
+  gap: 4px;
+}
+
+.keyword_box > .keyword_list_box > .item_label {
+  font-size: 14px;
+  line-height: 29px;
+  padding: 0 4px;
+  background-color: #333;
+}
+
+.keyword_box > .keyword_list_box > .item_label > a > button {
+  border: 0;
+  outline: 0;
+  background: none;
+  appearance: none;
+  border-radius: 0;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: "NanumHuman", sans-serif;
 }
