@@ -96,6 +96,12 @@ header {
   position: fixed;
   height: 65px;
   background-color: #dcdcdc;
+  transition: background-color 0.3s;
+}
+
+header.active {
+  background-color: #000;
+  color: #dcdcdc;
 }
 /* ---------------------탑 바---------------------- */
 .top_bar {
@@ -109,6 +115,11 @@ header {
   background: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/logo_gray.gif)
     no-repeat center / contain;
 }
+
+.top_bar_logo > a.active {
+  background: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/logo_black.gif)
+    no-repeat center / contain;
+}
 /* --------------------탑 바 메뉴------------------------------ */
 .top_bar_menu > ul {
   margin-right: 40px;
@@ -119,6 +130,11 @@ header {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.5px;
+  transition: color 0.1s;
+}
+
+.top_bar_menu > ul > li > a:hover {
+  color: #444;
 }
 
 .top_bar > .top_bar_menu > .search_btn {
@@ -133,10 +149,55 @@ header {
   background-position: -108px -155px;
   background-size: 214px auto;
 }
+
+.top_bar > .top_bar_menu > .search_btn.active {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 22px;
+  height: 22px;
+  background-image: url("https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/mo/ico_close_search.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.top_bar > .top_bar_menu > .search_btn.active:hover {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 22px;
+  height: 22px;
+  background-image: url("https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/mo/ico_close_search.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.top_bar > .top_bar_menu > .search_btn:hover {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 22px;
+  height: 22px;
+  background-image: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/sp-mo.png#ico_search);
+  background-repeat: no-repeat;
+  background-position: -81px -155px;
+  background-size: 214px auto;
+}
+
 /* ------------------서치 박스----------------- */
 .search_box {
   height: 289.797px;
   background-color: #000;
+  display: none;
+}
+
+.search_box.active {
+  display: block;
 }
 /* ---------------------서치 이너------------------ */
 .search_box > .search_inner {
@@ -214,6 +275,11 @@ header {
   line-height: 29px;
   padding: 0 4px;
   background-color: #333;
+  transition: background-color 0.1s;
+}
+
+.keyword_box > .keyword_list_box > .item_label:hover {
+  background-color: #ff4600;
 }
 
 .keyword_box > .keyword_list_box > .item_label > a > button {
