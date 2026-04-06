@@ -118,9 +118,10 @@ header.active {
   height: 28px;
   background: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/logo_gray.gif)
     no-repeat center / contain;
+  transition: all 0.3s;
 }
 
-.top_bar_logo > a.active {
+.top_bar_logo.active > a {
   background: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/logo_black.gif)
     no-repeat center / contain;
 }
