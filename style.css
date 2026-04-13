@@ -1,4 +1,4 @@
-/* ------------------폰트------------------ */
+/* ------------------ 폰트 ------------------ */
 @font-face {
   font-family: "NanumSquareNeo";
   src: url("./fonts/NanumSquareNeoOTF-Rg.otf") format("opentype");
@@ -41,13 +41,23 @@
   font-style: normal;
 }
 
+/* ------------------ 기본 설정 ------------------ */
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
+  padding: 0;
   font-family:
     NanumSquareNeo,
-    -apple-system;
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  overflow-x: hidden;
 }
-/*---------------- 노말라이즈--------------- */
-body,
+
 ul,
 li {
   margin: 0;
@@ -59,7 +69,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
-/* ----------------라이브러리----------------- */
+
+/* ------------------ 라이브러리 ------------------ */
 .border {
   border: 0.2px solid red;
 }
@@ -91,29 +102,41 @@ a {
 .w-100 {
   width: 100%;
 }
-/* 바디 */
+
+/* 임시 스크롤 확인용이면 유지, 아니면 삭제 가능 */
 body {
-  height: 5000px;
+  min-height: 5000px;
 }
-/* --------------------헤더-------------------- */
+
+/* -------------------- 헤더 -------------------- */
 header {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 65px;
   background-color: #dcdcdc;
   transition: background-color 0.3s;
+  z-index: 1000;
 }
 
 header.active {
   background-color: #000;
   color: #dcdcdc;
 }
-/* ---------------------탑 바---------------------- */
+
+/* --------------------- 탑 바 ---------------------- */
 .top_bar {
-  width: 1741px;
-  margin: 0 82px;
+  width: 100%;
+  max-width: 1741px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
 }
-/* -----------------------탑 바 로고--------------------- */
+
+/* ----------------------- 탑 바 로고 --------------------- */
 .top_bar_logo > a {
+  display: block;
   width: 140px;
   height: 28px;
   background: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/logo_gray.gif)
@@ -125,17 +148,25 @@ header.active {
   background: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/logo_black.gif)
     no-repeat center / contain;
 }
-/* --------------------탑 바 메뉴------------------------------ */
+
+/* -------------------- 탑 바 메뉴 ------------------------------ */
+.top_bar_menu {
+  gap: 16px;
+}
+
 .top_bar_menu > ul {
-  margin-right: 40px;
+  margin-right: 24px;
+  gap: 4px;
 }
 
 .top_bar_menu > ul > li > a {
-  padding: 0 20px;
+  display: block;
+  padding: 0 16px;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.5px;
   transition: color 0.1s;
+  white-space: nowrap;
 }
 
 .top_bar_menu > ul > li > a:hover {
@@ -143,10 +174,11 @@ header.active {
 }
 
 .top_bar > .top_bar_menu > .search_btn {
+  flex-shrink: 0;
   cursor: pointer;
   border: none;
   outline: none;
-  background: transparent;
+  background-color: transparent;
   width: 22px;
   height: 22px;
   background-image: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/sp-mo.png#ico_search);
@@ -156,12 +188,6 @@ header.active {
 }
 
 .top_bar > .top_bar_menu > .search_btn.active {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  width: 22px;
-  height: 22px;
   background-image: url("https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/mo/ico_close_search.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -169,12 +195,6 @@ header.active {
 }
 
 .top_bar > .top_bar_menu > .search_btn.active:hover {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  width: 22px;
-  height: 22px;
   background-image: url("https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/mo/ico_close_search.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -182,41 +202,42 @@ header.active {
 }
 
 .top_bar > .top_bar_menu > .search_btn:hover {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 22px;
-  height: 22px;
   background-image: url(https://campaign-cdn.pstatic.net/0/naverfficial/1108/img/sp-mo.png#ico_search);
   background-repeat: no-repeat;
   background-position: -81px -155px;
   background-size: 214px auto;
 }
 
-/* ------------------서치 박스----------------- */
+/* ------------------ 서치 박스 ----------------- */
 .search_box {
-  height: 289.797px;
-  background-color: #000;
   display: none;
+  width: 100%;
+  background-color: #000;
+  padding: 46px 0 50px;
 }
 
 .search_box.active {
   display: block;
 }
-/* ---------------------서치 이너------------------ */
+
+/* --------------------- 서치 이너 ------------------ */
 .search_box > .search_inner {
-  width: 864px;
-  height: 177.797px;
-  margin: 0 528px;
-  padding-top: 46px;
+  width: 100%;
+  max-width: 864px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-/* ---------------------서치 인풋--------------------- */
+
+/* --------------------- 서치 인풋 --------------------- */
 .search_box > .search_inner > .search_input {
-  height: 66px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 66px;
   background-color: #222;
 }
-/* ------------------------------서치 버튼 2----------------------------- */
+
+/* ------------------------------ 서치 버튼 2 ----------------------------- */
 .search_box > .search_inner > .search_input > .search_btn-2 {
   padding: 16px 18px;
   margin: 0;
@@ -228,6 +249,7 @@ header.active {
   box-shadow: none;
   line-height: 1;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .search_box > .search_inner > .search_input > .search_btn-2 > .search_icon {
@@ -239,25 +261,31 @@ header.active {
   background-position: -255px -96px;
   background-size: 305px auto;
 }
-/* -----------------------키워드 검색창------------------------------ */
+
+/* ----------------------- 키워드 검색창 ------------------------------ */
 .search_box > .search_inner > .search_input > .input_search {
   width: 100%;
+  min-width: 0;
+  padding-right: 16px;
   background-color: #222;
-  box-sizing: border-box;
   border: 0;
+  outline: 0;
   letter-spacing: -0.03em;
   color: #fff;
   font-size: 20px;
   font-weight: 600;
   font-family:
     NanumSquareNeo,
-    -apple-systeml;
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
-/* ---------------------------키워드 박스----------------------- */
+
+/* --------------------------- 키워드 박스 ----------------------- */
 .keyword_box {
-  height: 61.7969px;
-  margin-bottom: 66px;
   margin-top: 50px;
+  margin-bottom: 0;
 }
 
 .keyword_box > .keyword_title {
@@ -270,15 +298,16 @@ header.active {
 }
 
 .keyword_box > .keyword_list_box {
-  height: 29px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 6px;
   margin-top: 16px;
-  gap: 4px;
 }
 
 .keyword_box > .keyword_list_box > .item_label {
   font-size: 14px;
   line-height: 29px;
-  padding: 0 4px;
+  padding: 0 8px;
   background-color: #333;
   transition: background-color 0.1s;
 }
@@ -300,4 +329,354 @@ header.active {
   line-height: 1.2;
   letter-spacing: -0.02em;
   font-family: "NanumHuman", sans-serif;
+  padding: 0;
+}
+
+/* ------------------ 반응형: 큰 노트북 ------------------ */
+@media (max-width: 1440px) {
+  .top_bar {
+    padding: 0 24px;
+  }
+
+  .top_bar_menu > ul {
+    margin-right: 16px;
+  }
+
+  .top_bar_menu > ul > li > a {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .search_box > .search_inner > .search_input > .input_search {
+    font-size: 18px;
+  }
+}
+
+/* ------------------ 반응형: 노트북 ------------------ */
+@media (max-width: 1200px) {
+  .top_bar {
+    padding: 0 20px;
+  }
+
+  .top_bar_logo > a {
+    width: 120px;
+    height: 24px;
+  }
+
+  .top_bar_menu {
+    gap: 12px;
+  }
+
+  .top_bar_menu > ul {
+    margin-right: 12px;
+    gap: 0;
+  }
+
+  .top_bar_menu > ul > li > a {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  .search_box {
+    padding: 36px 0 40px;
+  }
+
+  .search_box > .search_inner {
+    max-width: 760px;
+  }
+}
+
+/* ------------------ 반응형: 태블릿 ------------------ */
+@media (max-width: 1024px) {
+  header {
+    height: 60px;
+  }
+
+  .top_bar {
+    padding: 0 16px;
+  }
+
+  .top_bar_logo > a {
+    width: 110px;
+    height: 22px;
+  }
+
+  .top_bar_menu > ul {
+    margin-right: 8px;
+  }
+
+  .top_bar_menu > ul > li > a {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .search_box > .search_inner {
+    padding: 0 16px;
+  }
+
+  .search_box > .search_inner > .search_input {
+    min-height: 58px;
+  }
+
+  .search_box > .search_inner > .search_input > .input_search {
+    font-size: 17px;
+  }
+
+  .keyword_box {
+    margin-top: 32px;
+  }
+}
+
+/* ------------------ 반응형: 모바일 ------------------ */
+@media (max-width: 768px) {
+  header {
+    height: 56px;
+  }
+
+  .top_bar {
+    padding: 0 12px;
+  }
+
+  .top_bar_logo > a {
+    width: 100px;
+    height: 20px;
+  }
+
+  .top_bar_menu {
+    gap: 8px;
+  }
+
+  .top_bar_menu > ul {
+    display: none;
+  }
+
+  .search_box {
+    padding: 24px 0 32px;
+  }
+
+  .search_box > .search_inner {
+    padding: 0 12px;
+  }
+
+  .search_box > .search_inner > .search_input {
+    min-height: 52px;
+  }
+
+  .search_box > .search_inner > .search_input > .search_btn-2 {
+    padding: 12px 14px;
+  }
+
+  .search_box > .search_inner > .search_input > .search_btn-2 > .search_icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .search_box > .search_inner > .search_input > .input_search {
+    font-size: 16px;
+  }
+
+  .keyword_box {
+    margin-top: 24px;
+  }
+
+  .keyword_box > .keyword_title {
+    font-size: 13px;
+  }
+
+  .keyword_box > .keyword_list_box > .item_label {
+    font-size: 13px;
+    line-height: 26px;
+    padding: 0 6px;
+  }
+
+  .keyword_box > .keyword_list_box > .item_label > a > button {
+    font-size: 13px;
+  }
+}
+
+/* ------------------ 반응형: 작은 모바일 ------------------ */
+@media (max-width: 480px) {
+  .top_bar {
+    padding: 0 10px;
+  }
+
+  .search_box > .search_inner {
+    padding: 0 10px;
+  }
+
+  .search_box > .search_inner > .search_input > .input_search {
+    font-size: 15px;
+  }
+
+  .keyword_box > .keyword_list_box {
+    gap: 6px 4px;
+  }
+}
+
+/* --------------슬라이드--------------- */
+.slider {
+  position: relative;
+  width: 100%;
+  margin: 65px auto 0;
+  overflow: hidden;
+}
+
+.slider-view {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 756px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+
+.slide:nth-child(1) {
+  background-color: #dcdcdc;
+}
+
+.slide:nth-child(2) {
+  background-color: #dcdcdc;
+}
+
+.slide:nth-child(3) {
+  background-color: #dcdcdc;
+}
+
+/* 버튼 공통 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.prev {
+  left: 36px;
+}
+
+.next {
+  right: 36px;
+}
+
+.arrow {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  background-color: #505050;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.arrow::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-left: 2px solid #505050;
+  border-bottom: 2px solid #505050;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.next .arrow {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 1024px) {
+  .slider {
+    margin-top: 60px;
+  }
+
+  .slide {
+    height: 620px;
+  }
+
+  .slider-btn {
+    width: 70px;
+    height: 70px;
+  }
+
+  .prev {
+    left: 20px;
+  }
+
+  .next {
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    margin-top: 56px;
+  }
+
+  .slide {
+    height: 460px;
+  }
+
+  .slider-btn {
+    width: 58px;
+    height: 58px;
+  }
+
+  .arrow {
+    width: 26px;
+    height: 26px;
+  }
+
+  .arrow::before {
+    left: 5px;
+    width: 18px;
+    height: 3px;
+  }
+
+  .arrow::after {
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid #505050;
+    border-bottom: 3px solid #505050;
+  }
+
+  .prev {
+    left: 12px;
+  }
+
+  .next {
+    right: 12px;
+  }
 }
