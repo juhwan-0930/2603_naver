@@ -4,52 +4,100 @@ $(".search_btn").click(function () {
   $(".search_box, .search_btn, header, .top_bar_logo").toggleClass("active");
 });
 
-const slider = document.querySelector(".slider");
-const track = document.querySelector(".slider-track");
-const slides = document.querySelectorAll(".slide");
-const prevBtn = document.querySelector(".prev");
-const nextBtn = document.querySelector(".next");
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  const progressItems = document.querySelectorAll(".progress-item");
+  const progressFills = document.querySelectorAll(".progress-fill");
 
-let currentIndex = 0;
-const totalSlides = slides.length;
-let autoSlide;
+  if (!slides.length || !prevBtn || !nextBtn) return;
 
-function updateSlider() {
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  const slideDuration = 8000;
+  const animationDuration = 700;
+  let autoTimer = null;
+  let isAnimating = false;
 
-function nextSlide() {
-  currentIndex++;
+  function setInitialSlide() {
+    slides.forEach((slide, index) => {
+      slide.classList.remove("active", "out");
 
-  if (currentIndex >= totalSlides) {
-    currentIndex = 0;
+      if (index === currentIndex) {
+        slide.classList.add("active");
+      }
+    });
   }
 
-  updateSlider();
-}
+  function updateProgress() {
+    progressFills.forEach((fill) => {
+      fill.style.transition = "none";
+      fill.style.width = "0%";
+    });
 
-function prevSlide() {
-  currentIndex--;
+    const activeFill = progressFills[currentIndex];
+    if (!activeFill) return;
 
-  if (currentIndex < 0) {
-    currentIndex = totalSlides - 1;
+    activeFill.offsetWidth;
+    activeFill.style.transition = `width ${slideDuration}ms linear`;
+    activeFill.style.width = "100%";
   }
 
-  updateSlider();
-}
+  function restartAutoSlide() {
+    clearTimeout(autoTimer);
 
-function startAutoSlide() {
-  autoSlide = setInterval(nextSlide, 3000);
-}
+    autoTimer = setTimeout(() => {
+      goToSlide((currentIndex + 1) % totalSlides);
+    }, slideDuration);
+  }
 
-function stopAutoSlide() {
-  clearInterval(autoSlide);
-}
+  function goToSlide(nextIndex) {
+    if (isAnimating || nextIndex === currentIndex) return;
 
-nextBtn.addEventListener("click", nextSlide);
-prevBtn.addEventListener("click", prevSlide);
+    isAnimating = true;
 
-slider.addEventListener("mouseenter", stopAutoSlide);
-slider.addEventListener("mouseleave", startAutoSlide);
+    const currentSlide = slides[currentIndex];
+    const nextSlide = slides[nextIndex];
 
-startAutoSlide();
+    currentSlide.classList.remove("active");
+    currentSlide.classList.add("out");
+
+    nextSlide.classList.add("active");
+
+    currentIndex = nextIndex;
+    updateProgress();
+    restartAutoSlide();
+
+    setTimeout(() => {
+      slides.forEach((slide, index) => {
+        if (index !== currentIndex) {
+          slide.classList.remove("active", "out");
+        }
+      });
+
+      isAnimating = false;
+    }, animationDuration);
+  }
+
+  function nextSlide() {
+    goToSlide((currentIndex + 1) % totalSlides);
+  }
+
+  function prevSlide() {
+    goToSlide((currentIndex - 1 + totalSlides) % totalSlides);
+  }
+
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  progressItems.forEach((item, index) => {
+    item.addEventListener("click", function () {
+      goToSlide(index);
+    });
+  });
+
+  setInitialSlide();
+  updateProgress();
+  restartAutoSlide();
+});

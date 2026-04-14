@@ -103,7 +103,6 @@ a {
   width: 100%;
 }
 
-/* 임시 스크롤 확인용이면 유지, 아니면 삭제 가능 */
 body {
   min-height: 5000px;
 }
@@ -128,7 +127,7 @@ header.active {
 /* --------------------- 탑 바 ---------------------- */
 .top_bar {
   width: 100%;
-  max-width: 1741px;
+  max-width: 1800px;
   height: 100%;
   margin: 0 auto;
   padding: 0 32px;
@@ -522,41 +521,69 @@ header.active {
 }
 
 .slider-view {
+  position: relative;
   width: 100%;
+  height: 1026px;
   overflow: hidden;
+
+  /* 배경은 여기 둠 */
+  background-color: #dcdcdc;
+  /* background-image: url(...); */
+  /* background-size: cover; */
+  /* background-position: center; */
 }
 
 .slider-track {
-  display: flex;
-  transition: transform 0.5s ease;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .slide {
-  position: relative;
-  flex: 0 0 100%;
-  width: 100%;
-  height: 756px;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40px;
-  font-weight: bold;
-  color: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.slide:nth-child(1) {
-  background-color: #dcdcdc;
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 3;
 }
 
-.slide:nth-child(2) {
-  background-color: #dcdcdc;
+.slide.out {
+  opacity: 1;
+  z-index: 2;
 }
 
-.slide:nth-child(3) {
-  background-color: #dcdcdc;
+/* 안의 요소만 움직임 */
+.slide-content {
+  opacity: 0;
+  transform: translateX(60px);
+  transition:
+    transform 0.9s ease,
+    opacity 0.9s ease;
+  will-change: transform, opacity;
+  text-align: center;
+  color: #111;
 }
 
-/* 버튼 공통 */
+.slide.active .slide-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide.out .slide-content {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+/* 버튼 */
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -616,26 +643,44 @@ header.active {
   transform: rotate(180deg);
 }
 
+/* 진행 막대 */
+.slider-progress {
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 20;
+}
+
+.progress-item {
+  position: relative;
+  width: 80px;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  background: #bdbdbd;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #111;
+}
+
 @media (max-width: 1024px) {
   .slider {
     margin-top: 60px;
   }
 
-  .slide {
+  .slider-view {
     height: 620px;
-  }
-
-  .slider-btn {
-    width: 70px;
-    height: 70px;
-  }
-
-  .prev {
-    left: 20px;
-  }
-
-  .next {
-    right: 20px;
   }
 }
 
@@ -644,32 +689,8 @@ header.active {
     margin-top: 56px;
   }
 
-  .slide {
+  .slider-view {
     height: 460px;
-  }
-
-  .slider-btn {
-    width: 58px;
-    height: 58px;
-  }
-
-  .arrow {
-    width: 26px;
-    height: 26px;
-  }
-
-  .arrow::before {
-    left: 5px;
-    width: 18px;
-    height: 3px;
-  }
-
-  .arrow::after {
-    left: 5px;
-    width: 10px;
-    height: 10px;
-    border-left: 3px solid #505050;
-    border-bottom: 3px solid #505050;
   }
 
   .prev {
@@ -678,5 +699,23 @@ header.active {
 
   .next {
     right: 12px;
+  }
+
+  .slider-progress {
+    bottom: 20px;
+    gap: 10px;
+  }
+
+  .progress-item {
+    width: 80px;
+    height: 4px;
+  }
+
+  .slide-content {
+    transform: translateX(40px);
+  }
+
+  .slide.out .slide-content {
+    transform: translateX(-40px);
   }
 }

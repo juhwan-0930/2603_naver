@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
-    <!-- 제이쿼리 -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
@@ -25,6 +23,7 @@
           <button class="search_btn"></button>
         </nav>
       </div>
+
       <div class="search_box">
         <div class="search_inner">
           <div class="search_input flex">
@@ -37,83 +36,115 @@
               placeholder="키워드로 검색해보세요!"
             />
           </div>
+
           <div class="keyword_box block">
             <em class="keyword_title">Popular Keyword</em>
             <div class="keyword_list_box flex">
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">브랜딩</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">브랜딩</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">마케팅</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">마케팅</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">테크</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">테크</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">서비스</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">서비스</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">디자인</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">디자인</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">기획</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">기획</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">네이버생활</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">
+                    네이버생활
+                  </button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">기업문화</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">기업문화</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">커리어</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">커리어</button></a
+                >
               </div>
               <div class="item_label">
-                <a href="#">
-                  <button type="button" class="btn_label">인사이트</button>
-                </a>
+                <a href="#"
+                  ><button type="button" class="btn_label">인사이트</button></a
+                >
               </div>
             </div>
           </div>
         </div>
+      </div>
     </header>
 
-      </div>
-      <div class="slider">
-        <div class="slider-view">
-          <div class="slider-track">
-            <div class="slide">1번 슬라이드</div>
-            <div class="slide">2번 슬라이드</div>
-            <div class="slide">3번 슬라이드</div>
+    <div class="slider">
+      <div class="slider-view">
+        <div class="slider-track">
+          <div class="slide active">
+            <div class="slide-content">
+              <h2>첫 번째 슬라이드</h2>
+              <p>안의 요소만 움직이게</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-content">
+              <h2>두 번째 슬라이드</h2>
+              <p>배경은 그대로 유지</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-content">
+              <h2>세 번째 슬라이드</h2>
+              <p>내용만 오른쪽에서 등장</p>
+            </div>
           </div>
         </div>
-
-        <button class="prev slider-btn" aria-label="이전">
-  <span class="arrow"></span>
-</button>
-
-<button class="next slider-btn" aria-label="다음">
-  <span class="arrow"></span>
-</button>
       </div>
-    <!-- JS -->
+
+      <button class="prev slider-btn" aria-label="이전">
+        <span class="arrow"></span>
+      </button>
+
+      <button class="next slider-btn" aria-label="다음">
+        <span class="arrow"></span>
+      </button>
+
+      <div class="slider-progress">
+        <button class="progress-item" aria-label="1번 슬라이드">
+          <span class="progress-fill"></span>
+        </button>
+        <button class="progress-item" aria-label="2번 슬라이드">
+          <span class="progress-fill"></span>
+        </button>
+        <button class="progress-item" aria-label="3번 슬라이드">
+          <span class="progress-fill"></span>
+        </button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
